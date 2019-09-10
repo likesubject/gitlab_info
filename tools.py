@@ -17,7 +17,7 @@ class Gitlab(object):
             service_url, private_token=private_token, api_version=str(api_version)
         )
         try:
-            self._projects = self.gl.projects.list()
+            self._projects = self.gl.projects.list(all=True)
         except Exception as e:
             logging.error(repr(e))
             raise ValueError('Gitlab connect error')
@@ -85,7 +85,7 @@ class GitlabProject(object):
         if self.gitlab.api_version == '3':
             pass
         else:
-            members = self._project.members.list()
+            members = self._project.members.list(all=True)
             for member in members:
                 if member.access_level == gitlab.MASTER_ACCESS:
                     master_members.append(member)

@@ -15,4 +15,8 @@ def run(token, service_url, api_version):
 
 
 if __name__ == '__main__':
-    run()
+    # run('_vTxX9faeFzc4WRFjWdu', 'http://git.zhaoqi.info:9998', '4') #test
+    try:
+        run()
+    except ValueError as e:
+        print(e)
